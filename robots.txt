@@ -1,0 +1,42 @@
+# Robots.txt für BEKA Website
+# Generiert am 16.12.2025
+
+# Alle Bots erlauben
+User-agent: *
+Allow: /
+
+# WordPress-spezifische Einschränkungen
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content/plugins/
+Disallow: /wp-content/cache/
+Disallow: /wp-content/themes/*/inc/
+Disallow: /wp-content/uploads/wpcf7_uploads/
+
+# Technische Dateien ausschließen
+Disallow: /xmlrpc.php
+Disallow: /wp-login.php
+Disallow: /wp-register.php
+Disallow: /*.php$
+Disallow: /*.inc$
+Disallow: /*.gz$
+
+# Suchparameter ausschließen
+Disallow: /*?s=
+Disallow: /*&
+Disallow: /?author=
+
+# Kommentare und Trackbacks
+Disallow: /*/trackback/
+Disallow: /*/comment-page-
+
+# Feed URLs erlauben (für SEO wichtig)
+Allow: /feed/
+Allow: /*/feed/
+
+# Sitemap-Verweis (URL muss angepasst werden wenn Sitemap aktiv ist)
+# Sitemap: https://ihre-domain.de/sitemap_index.xml
+# Sitemap: https://ihre-domain.de/wp-sitemap.xml
+
+# Crawler-Raten (optional - kann angepasst werden)
+# Crawl-delay: 5

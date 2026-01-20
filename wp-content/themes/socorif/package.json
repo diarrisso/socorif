@@ -1,0 +1,30 @@
+{
+  "name": "beka",
+  "version": "1.0.0",
+  "description": "Theme WordPress Beka avec TailwindCSS v4 et Alpine.js",
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./assets/src/css/main.scss -o ./assets/dist/style.css --watch",
+    "build": "npx @tailwindcss/cli -i ./assets/src/css/main.scss -o ./assets/dist/style.css --minify",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,html,md,json}\""
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "tailwindcss",
+    "alpine.js"
+  ],
+  "author": "Beka",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.0.0",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "sass": "^1.97.0",
+    "tailwindcss": "^4.0.0"
+  },
+  "dependencies": {
+    "@tailwindplus/elements": "^1.0.19",
+    "alpinejs": "^3.14.1",
+    "swiper": "^12.0.3"
+  }
+}

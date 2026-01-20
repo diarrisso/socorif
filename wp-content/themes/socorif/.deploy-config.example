@@ -1,0 +1,50 @@
+# Configuration de déploiement SSH/Rsync pour BEKA Theme
+# Copier ce fichier en .deploy-config et remplir avec vos informations Mittwald
+
+# Méthode de déploiement (ssh ou ftp)
+DEPLOY_METHOD="ssh"
+
+# Configuration SSH Mittwald
+# Remplacez avec vos informations Mittwald
+SSH_USER="votreuser"
+SSH_HOST="votre-serveur.mittwald.de"
+SSH_PORT="22"
+SSH_PATH="/var/www/html/wp-content/themes/beka"
+
+# Configuration WordPress (pour deploy-full.sh)
+# Chemin local vers la racine WordPress (relatif au thème)
+LOCAL_WP_PATH="../../.."
+
+# Chemin distant vers la racine WordPress sur Mittwald
+REMOTE_WP_PATH="/var/www/html"
+
+# URLs (IMPORTANT: Adapter selon votre configuration)
+LOCAL_URL="http://localhost:8000"
+REMOTE_URL="http://wordpress.p702794.webspaceconfig.de/"
+
+# Dossiers et fichiers à exclure du déploiement
+EXCLUDE_PATHS=(
+    "node_modules"
+    ".git"
+    ".claude"
+    ".DS_Store"
+    "*.log"
+    ".env"
+    ".deploy-config"
+    "package-lock.json"
+    "composer.lock"
+    ".gitignore"
+    "README.md"
+    "DEPLOYMENT.md"
+    ".deploy-config.example"
+)
+
+# Activer le déploiement automatique sur commit ? (true/false)
+AUTO_DEPLOY="false"
+
+# Branches autorisées pour le déploiement automatique
+DEPLOY_BRANCHES=(
+    "main"
+    "master"
+    "production"
+)

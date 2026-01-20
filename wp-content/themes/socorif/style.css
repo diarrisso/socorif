@@ -1,0 +1,15 @@
+/*
+Theme Name: Socorif
+Theme URI: https://socorif.com
+Author: Socorif
+Author URI: https://socorif.com
+Description: Theme WordPress avec TailwindCSS v4, Alpine.js et ACF blocks centralises. Specialise dans la gestion et promotion immobiliere.
+Version: 1.0.0
+License: GPL-2.0-or-later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: socorif
+Tags: tailwindcss, alpine-js, acf-blocks, responsive, modern, immobilier
+
+Ce theme utilise TailwindCSS v4 pour le styling et Alpine.js pour les interactions.
+Les styles sont compiles dans assets/dist/style.css
+*/

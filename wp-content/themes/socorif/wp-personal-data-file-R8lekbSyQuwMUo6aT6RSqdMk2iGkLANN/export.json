@@ -1,0 +1,22 @@
+{
+  "Export personenbezogener Daten für diarrisso@achtzigdreissig.de": {
+    "about": {
+      "group_label": "\u00dcber",
+      "group_description": "\u00dcbersicht \u00fcber den Exportbericht.",
+      "items": {
+        "about-1": [
+          {
+            "name": "Bericht erstellt f\u00fcr",
+            "value": "diarrisso@achtzigdreissig.de"
+          },
+          { "name": "F\u00fcr Website", "value": "Die Beka" },
+          {
+            "name": "Auf URL",
+            "value": "https:\/\/die-beka.dingsbums-agentur.de"
+          },
+          { "name": "Am", "value": "2025-11-21 16:25:11" }
+        ]
+      }
+    }
+  }
+}

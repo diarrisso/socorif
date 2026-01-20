@@ -1,0 +1,61 @@
+# WordPress core files
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/index.php
+/license.txt
+/readme.html
+/xmlrpc.php
+
+# Configuration
+wp-config.php
+
+# Uploads
+/wp-content/uploads/
+
+# Plugins (uncomment to ignore all plugins)
+# /wp-content/plugins/
+
+# Themes (keep your custom theme)
+/wp-content/themes/twenty*/
+
+# Cache and backup
+/wp-content/cache/
+/wp-content/backup*/
+/wp-content/upgrade/
+
+# Node modules
+node_modules/
+
+# Build artifacts
+/dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+*.swp
+*.swo
+.vscode/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Archives
+*.zip
+*.tar.gz
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Claude
+.claude/
+
+# Images folder
+/image/
+wp-config-local.php

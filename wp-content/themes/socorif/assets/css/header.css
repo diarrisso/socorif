@@ -1,0 +1,300 @@
+/**
+ * Header Styles - Ossenberg-Engels
+ * Design with click-to-open overlay mega menu
+ */
+
+/* ===== HEADER CONTAINER ===== */
+.ossenberg-header {
+  background: #ffffff;
+  position: relative;
+  z-index: 100;
+}
+
+/* ===== CONTACT LINK ===== */
+.header-contact-link svg {
+  transition: transform 0.2s ease;
+}
+
+.header-contact-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* ===== MAIN NAVIGATION MENU ===== */
+.header-main-menu {
+  list-style: none;
+  margin: 0;
+  padding: 1.5rem 0;
+  gap: 0;
+}
+
+/* Top Level Menu Items */
+.header-menu-item {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* Vertical Separators */
+.header-menu-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 20px;
+  background: #e5e7eb;
+}
+
+.dark .header-menu-item:not(:last-child)::after {
+  background: #374151;
+}
+
+/* Active State - Red Underline */
+.header-menu-item .active-menu-link {
+  position: relative;
+}
+
+.header-menu-item .active-menu-link::after {
+  content: "";
+  position: absolute;
+  left: 1.5rem;
+  right: 1.5rem;
+  bottom: 0;
+  height: 2px;
+  background: #dc2626;
+}
+
+.dark .header-menu-item .active-menu-link::after {
+  background: #ef4444;
+}
+
+/* ===== RED LINE WITH TRIANGLE ===== */
+.header-red-line {
+  position: relative;
+}
+
+/* Triangle Positioning - Updated via JavaScript */
+.menu-triangle.active {
+  opacity: 1;
+}
+
+/* ===== MEGA MENU OVERLAY ===== */
+.mega-menu-overlay {
+  backdrop-filter: blur(2px);
+}
+
+.mega-menu-panel {
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== INLINE MEGA MENU (Hover Dropdown) ===== */
+.mega-menu-dropdown {
+  transform-origin: top center;
+}
+
+.group:hover > .mega-menu-dropdown {
+  animation: megaMenuFadeIn 0.3s ease forwards;
+}
+
+@keyframes megaMenuFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Standard dropdown animation */
+.group:hover > ul {
+  animation: dropdownFadeIn 0.2s ease forwards;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mega-menu item hover effect */
+.mega-menu-item a {
+  position: relative;
+  overflow: hidden;
+}
+
+.mega-menu-item a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(249, 115, 22, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mega-menu-item a:hover::before {
+  opacity: 1;
+}
+
+/* Ensure dropdown doesn't interfere with other items */
+.menu-item-has-children {
+  position: relative;
+}
+
+.menu-item-has-children > ul,
+.menu-item-has-children > .mega-menu-dropdown {
+  pointer-events: none;
+}
+
+.menu-item-has-children:hover > ul,
+.menu-item-has-children:hover > .mega-menu-dropdown {
+  pointer-events: auto;
+}
+
+/* Mega-menu grid responsive */
+@media (max-width: 768px) {
+  .mega-menu-dropdown ul {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.dark .mega-menu-panel {
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Overlay content scrollable */
+.mega-menu-panel > div {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+/* Hide scrollbar but keep functionality */
+.mega-menu-panel > div::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mega-menu-panel > div::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mega-menu-panel > div::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.dark .mega-menu-panel > div::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ===== MOBILE STYLES ===== */
+@media (max-width: 1023px) {
+  .ossenberg-header .py-8 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .header-contact-link {
+    font-size: 0.875rem;
+  }
+
+  .language-switcher span {
+    display: none;
+  }
+
+  .mega-menu-panel {
+    max-width: 100%;
+  }
+}
+
+/* ===== DARK MODE ===== */
+.dark .ossenberg-header {
+  background: #111827;
+}
+
+.dark .mega-menu-overlay {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* ===== SMOOTH TRANSITIONS ===== */
+.header-menu-item,
+.header-menu-item a,
+.menu-triangle {
+  transition: all 0.3s ease;
+}
+
+/* ===== ACCESSIBILITY ===== */
+.header-menu-item a:focus-visible {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+#close-mega-menu:focus-visible {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ===== ANTI-ALIASING ===== */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*footer */
+
+.curve-top-inside::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60vh;
+  background: white;
+  border-radius: 5% 5% 100% 100%;
+}
+
+/* Méthode 2: Avec radial-gradient */
+.curve-gradient-top {
+  background:
+    radial-gradient(ellipse 100% 80px at 50% 0%, white 50%, transparent 50.1%),
+    #2563eb;
+}
+
+/* Méthode 3: Avec ::after pour courbe plus profonde */
+.curve-deep::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: white;
+  border-radius: 0 0 50% 50%;
+}
+
+/* Méthode 4: Courbe asymétrique */
+.curve-asymmetric::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: white;
+  border-radius: 0 0 80% 20%;
+}
+
+footer .centered-content {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+}

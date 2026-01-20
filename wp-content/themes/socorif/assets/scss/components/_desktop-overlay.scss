@@ -1,0 +1,94 @@
+/**
+ * Desktop Navigation Overlay Styles
+ * Full-screen overlay with multi-level menu navigation
+ *
+ * @package Ossenberg_Engels
+ */
+
+/* Force all menu links in overlay to be white by default */
+.desktop-overlay-nav {
+  ul[class*="flex"] a,
+  nav a {
+    color: #ffffff !important;
+  }
+
+  /* Active menu item styling - white, bold, underlined */
+  .current-menu-item > a,
+  .current_page_item > a,
+  .current-menu-ancestor > a,
+  .current_page_ancestor > a {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    text-decoration: underline !important;
+  }
+
+  /* Override any red text in overlay to white */
+  li a[class*="text-red"] {
+    color: #ffffff !important;
+  }
+
+  /* Leistung menu item - always underlined with thin line (1px) */
+  nav a[href*="leistungen"],
+  nav a[href*="leistung"] {
+    text-decoration: underline !important;
+    font-weight: 700 !important;
+    text-decoration-thickness: 1px !important;
+    text-underline-offset: 4px !important;
+  }
+}
+
+/* Animation for submenu items appearing one by one */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fix layout shift when submenu appears */
+.submenu-level3 {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: 80px !important;
+  width: 100% !important;
+}
+
+/* Ensure parent container is relative */
+.desktop-overlay-nav nav > div {
+  position: relative;
+}
+
+.desktop-overlay-content-wrapper {
+  position: relative;
+  height: 100%;
+  background-color: #e1191e;
+  z-index: 10;
+}
+
+/* Custom Shape Divider Bottom */
+.custom-shape-divider-bottom-1761932281 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+  z-index: 5;
+
+  svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+  }
+
+  .shape-fill {
+    fill: #000000;
+  }
+}

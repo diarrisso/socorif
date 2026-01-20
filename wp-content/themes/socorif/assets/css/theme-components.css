@@ -1,0 +1,391 @@
+/**
+ * Theme Components CSS
+ * Combined file for better performance
+ *
+ * Includes:
+ * - Decorative Backgrounds
+ * - Header Styles
+ * - Decorative Clip Paths
+ *
+ * @package Ossenberg_Engels
+ */
+
+/* ========================================
+   DECORATIVE BACKGROUNDS
+   ======================================== */
+
+/* Animation pulse lente pour les backgrounds animes */
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Animation fade-in pour les backgrounds */
+@keyframes fade-in-background {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Optimisation des performances pour les SVG */
+.decorative-background {
+  will-change: opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Support du mode sombre avec transition douce */
+@media (prefers-color-scheme: dark) {
+  .decorative-background svg,
+  .decorative-background path,
+  .decorative-background circle {
+    transition:
+      stroke 0.3s ease,
+      fill 0.3s ease;
+  }
+}
+
+/* Ameliorations d'accessibilite */
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse-slow {
+    animation: none;
+  }
+}
+
+/* Classes utilitaires pour les fonds decoratifs */
+.has-decorative-background {
+  position: relative;
+  isolation: isolate;
+}
+
+.decorative-background-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Styles pour les differents variants */
+.decorative-background--grid {
+  /* Grid specifique */
+}
+
+.decorative-background--dots {
+  /* Dots specifique */
+}
+
+.decorative-background--waves {
+  /* Waves specifique */
+}
+
+.decorative-background--radial {
+  /* Radial specifique */
+}
+
+/* Optimisation mobile */
+@media (max-width: 768px) {
+  .decorative-background svg {
+    /* Reduire la complexite sur mobile si necessaire */
+  }
+}
+
+/* Print styles - masquer les backgrounds decoratifs lors de l'impression */
+@media print {
+  .decorative-background,
+  [aria-hidden="true"].decorative-background {
+    display: none !important;
+  }
+}
+
+/* ========================================
+   HEADER STYLES
+   ======================================== */
+
+/* ===== HEADER CONTAINER ===== */
+.ossenberg-header {
+  background: #ffffff;
+  position: relative;
+  z-index: 100;
+}
+
+/* ===== CONTACT LINK ===== */
+.header-contact-link svg {
+  transition: transform 0.2s ease;
+}
+
+.header-contact-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* ===== MAIN NAVIGATION MENU ===== */
+.header-main-menu {
+  list-style: none;
+  margin: 0;
+  padding: 1.5rem 0;
+  gap: 0;
+}
+
+/* Top Level Menu Items */
+.header-menu-item {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* Vertical Separators */
+.header-menu-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 20px;
+  background: #e5e7eb;
+}
+
+.dark .header-menu-item:not(:last-child)::after {
+  background: #374151;
+}
+
+/* Active State & Hover - Simple Border Bottom */
+header nav ul > li > a {
+  position: relative;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid transparent !important;
+  transition: border-color 0.3s ease !important;
+}
+
+header nav ul > li > a:hover,
+header nav ul > li > a.text-red-600,
+header nav ul > li > a.active {
+  border-bottom-color: #e1191e !important;
+}
+
+.dark header nav ul > li > a:hover,
+.dark header nav ul > li > a.text-red-600,
+.dark header nav ul > li > a.active {
+  border-bottom-color: #ef4444 !important;
+}
+
+/* ===== RED LINE WITH TRIANGLE ===== */
+.header-red-line {
+  position: relative;
+}
+
+/* Triangle Positioning - Updated via JavaScript */
+.menu-triangle.active {
+  opacity: 1;
+}
+
+/* ===== MEGA MENU OVERLAY ===== */
+.mega-menu-overlay {
+  backdrop-filter: blur(2px);
+}
+
+.mega-menu-panel {
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+}
+
+.dark .mega-menu-panel {
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Overlay content scrollable */
+.mega-menu-panel > div {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+/* Hide scrollbar but keep functionality */
+.mega-menu-panel > div::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mega-menu-panel > div::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mega-menu-panel > div::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.dark .mega-menu-panel > div::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ===== MOBILE STYLES ===== */
+@media (max-width: 1023px) {
+  .ossenberg-header .py-8 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .header-contact-link {
+    font-size: 0.875rem;
+  }
+
+  .language-switcher span {
+    display: none;
+  }
+
+  .mega-menu-panel {
+    max-width: 100%;
+  }
+}
+
+/* ===== DARK MODE ===== */
+.dark .ossenberg-header {
+  background: #111827;
+}
+
+.dark .mega-menu-overlay {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* ===== SMOOTH TRANSITIONS ===== */
+.header-menu-item,
+.header-menu-item a,
+.menu-triangle {
+  transition: all 0.3s ease;
+}
+
+/* ===== ACCESSIBILITY ===== */
+.header-menu-item a:focus-visible {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+#close-mega-menu:focus-visible {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ===== ANTI-ALIASING ===== */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== FOOTER CURVES ===== */
+.curve-top-inside::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60vh;
+  background: white;
+  border-radius: 5% 5% 100% 100%;
+}
+
+/* Méthode 2: Avec radial-gradient */
+.curve-gradient-top {
+  background:
+    radial-gradient(ellipse 100% 80px at 50% 0%, white 50%, transparent 50.1%),
+    #2563eb;
+}
+
+/* Méthode 3: Avec ::after pour courbe plus profonde */
+.curve-deep::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: white;
+  border-radius: 0 0 50% 50%;
+}
+
+/* Méthode 4: Courbe asymétrique */
+.curve-asymmetric::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: white;
+  border-radius: 0 0 80% 20%;
+}
+
+footer .centered-content {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+}
+
+/* ========================================
+   DECORATIVE CLIP PATHS
+   ======================================== */
+
+/* Clip path organique 1 - Pour karriere-cta et leistungen-header */
+.clip-organic-1 {
+  clip-path: polygon(
+    74.1% 44.1%,
+    100% 61.6%,
+    97.5% 26.9%,
+    85.5% 0.1%,
+    80.7% 2%,
+    72.5% 32.5%,
+    60.2% 62.4%,
+    52.4% 68.1%,
+    47.5% 58.3%,
+    45.2% 34.5%,
+    27.5% 76.7%,
+    0.1% 64.9%,
+    17.9% 100%,
+    27.6% 76.8%,
+    76.1% 97.7%,
+    74.1% 44.1%
+  );
+}
+
+/* Clip path organique 2 - Pour contact-form */
+.clip-organic-2 {
+  clip-path: polygon(
+    74.1% 56.1%,
+    100% 38.6%,
+    97.5% 73.3%,
+    85.5% 100%,
+    80.7% 98.2%,
+    72.5% 67.7%,
+    60.2% 37.8%,
+    52.4% 32.2%,
+    47.5% 41.9%,
+    45.2% 65.8%,
+    27.5% 23.5%,
+    0.1% 35.4%,
+    17.9% 0.1%,
+    27.6% 23.5%,
+    76.1% 2.6%,
+    74.1% 56.1%
+  );
+}
+
+/* Classes utilitaires pour dimensions */
+.aspect-1155\/678 {
+  aspect-ratio: 1155 / 678;
+}
+
+.w-288\.75 {
+  width: 288.75px;
+}

@@ -1,0 +1,159 @@
+<?php
+/**
+ * About Block Template
+ * Modernes Layout mit Mission, Bilder-Mosaik und Statistiken
+ */
+
+if (!defined('ABSPATH')) exit;
+
+// Block-Identifikation im HTML-Quellcode
+beka_block_comment_start('about');
+
+// Felder abrufen
+$intro_label = beka_get_field('intro_label');
+$title = beka_get_field('title');
+$intro_text = beka_get_field('intro_text');
+$mission_title = beka_get_field('mission_title');
+$mission_text_1 = beka_get_field('mission_text_1');
+$mission_text_2 = beka_get_field('mission_text_2');
+$image_1 = beka_get_field('image_1');
+$image_2 = beka_get_field('image_2');
+$image_3 = beka_get_field('image_3');
+$image_4 = beka_get_field('image_4');
+$stats_title = beka_get_field('stats_title');
+$stats = beka_get_field('stats', []);
+
+$section_classes = 'about-block overflow-hidden bg-white py-24 sm:py-32 dark:bg-gray-900';
+
+if (isset($block)) {
+    $wrapper_attrs = beka_get_block_wrapper_attributes($block, $section_classes);
+    echo '<div ' . $wrapper_attrs . '>';
+} else {
+    echo '<div class="' . esc_attr($section_classes) . '">';
+}
+?>
+    <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+        <!-- Einführungsbereich -->
+        <div class="max-w-4xl">
+            <?php if ($intro_label) : ?>
+                <p class="text-base/7 font-semibold text-indigo-600 dark:text-indigo-400">
+                    <?php echo esc_html($intro_label); ?>
+                </p>
+            <?php endif; ?>
+
+            <?php if ($title) : ?>
+                <h1 class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl dark:text-white">
+                    <?php echo esc_html($title); ?>
+                </h1>
+            <?php endif; ?>
+
+            <?php if ($intro_text) : ?>
+                <p class="mt-6 text-xl/8 text-balance text-gray-700 dark:text-gray-300">
+                    <?php echo esc_html($intro_text); ?>
+                </p>
+            <?php endif; ?>
+        </div>
+
+        <!-- Haupt-Inhalts-Raster -->
+        <section class="mt-20 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-16">
+            <!-- Missions-Text -->
+            <div class="lg:pr-8">
+                <?php if ($mission_title) : ?>
+                    <h2 class="text-2xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+                        <?php echo esc_html($mission_title); ?>
+                    </h2>
+                <?php endif; ?>
+
+                <?php if ($mission_text_1) : ?>
+                    <p class="mt-6 text-base/7 text-gray-600 dark:text-gray-400">
+                        <?php echo esc_html($mission_text_1); ?>
+                    </p>
+                <?php endif; ?>
+
+                <?php if ($mission_text_2) : ?>
+                    <p class="mt-8 text-base/7 text-gray-600 dark:text-gray-400">
+                        <?php echo esc_html($mission_text_2); ?>
+                    </p>
+                <?php endif; ?>
+            </div>
+
+            <!-- Bilder-Mosaik -->
+            <div class="pt-16 lg:row-span-2 lg:-mr-16 xl:mr-auto">
+                <div class="-mx-8 grid grid-cols-2 gap-4 sm:-mx-16 sm:grid-cols-4 lg:mx-0 lg:grid-cols-2 xl:gap-8">
+                    <?php if ($image_1) : ?>
+                        <div class="aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10 dark:shadow-none dark:outline-white/10">
+                            <?php echo beka_image($image_1, 'medium_large', [
+                                'class' => 'block size-full object-cover',
+                                'loading' => 'lazy'
+                            ]); ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($image_2) : ?>
+                        <div class="-mt-8 aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10 lg:-mt-40 dark:shadow-none dark:outline-white/10">
+                            <?php echo beka_image($image_2, 'medium_large', [
+                                'class' => 'block size-full object-cover',
+                                'loading' => 'lazy'
+                            ]); ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($image_3) : ?>
+                        <div class="aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10 dark:shadow-none dark:outline-white/10">
+                            <?php echo beka_image($image_3, 'medium_large', [
+                                'class' => 'block size-full object-cover',
+                                'loading' => 'lazy'
+                            ]); ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($image_4) : ?>
+                        <div class="-mt-8 aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10 lg:-mt-40 dark:shadow-none dark:outline-white/10">
+                            <?php echo beka_image($image_4, 'medium_large', [
+                                'class' => 'block size-full object-cover',
+                                'loading' => 'lazy'
+                            ]); ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+
+            <!-- Statistik-Bereich -->
+            <div class="max-lg:mt-16 lg:col-span-1">
+                <?php if ($stats_title) : ?>
+                    <p class="text-base/7 font-semibold text-gray-500 dark:text-gray-400">
+                        <?php echo esc_html($stats_title); ?>
+                    </p>
+                    <hr class="mt-6 border-t border-gray-200 dark:border-gray-700" />
+                <?php endif; ?>
+
+                <?php if ($stats) : ?>
+                    <dl class="mt-6 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
+                        <?php
+                        $stats_count = count($stats);
+                        foreach ($stats as $index => $stat) :
+                            if (empty($stat['label']) || empty($stat['value'])) continue;
+
+                            // Letzte 2 Elemente haben keinen Rahmen auf Desktop
+                            $border_class = ($index < $stats_count - 2)
+                                ? 'border-b border-dotted border-gray-200 pb-4 dark:border-gray-700'
+                                : 'max-sm:border-b max-sm:border-dotted max-sm:border-gray-200 max-sm:pb-4 dark:max-sm:border-gray-700';
+                        ?>
+                            <div class="flex flex-col gap-y-2 <?php echo esc_attr($border_class); ?>">
+                                <dt class="text-sm/6 text-gray-600 dark:text-gray-400">
+                                    <?php echo esc_html($stat['label']); ?>
+                                </dt>
+                                <dd class="order-first text-6xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                                    <?php echo esc_html($stat['value']); ?>
+                                </dd>
+                            </div>
+                        <?php endforeach; ?>
+                    </dl>
+                <?php endif; ?>
+            </div>
+        </section>
+    </div>
+</div>
+<?php
+// Block-Ende markieren
+beka_block_comment_end('about');

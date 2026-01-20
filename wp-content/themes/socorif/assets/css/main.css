@@ -1,0 +1,114 @@
+@import "tailwindcss";
+@import "./fonts.css";
+
+/* Configuration du dark mode avec stratégie de classe */
+@variant dark (.dark &);
+
+@theme {
+  /* Personnalisations du thème */
+  --font-display: "Georgia", serif;
+
+  /* Police Dwight */
+  --font-dwight: "Dwight", sans-serif;
+
+  /* Tailles de texte personnalisées */
+  --text-18: 18px;
+  --text-18--line-height: calc(22/18);
+  --text-28: 28px;
+  --text-28--line-height: calc(34/28);
+  --text-48: 48px;
+  --text-48--line-height: calc(56/48);
+  --text-72: 72px;
+  --text-72--line-height: calc(36/72);
+}
+
+@layer base {
+  /* Styles de base */
+
+  /* Cursor pointer sur tous les elements interactifs */
+  a,
+  button,
+  [role="button"],
+  input[type="submit"],
+  input[type="button"],
+  input[type="reset"],
+  select,
+  label[for],
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+  /* Cursor pointer sur toutes les images au survol avec animation */
+  img {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+
+  img:hover {
+    transform: scale(1.05);
+  }
+
+  /* Animation spéciale pour les images dans des liens */
+  a img {
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+  }
+
+  a img:hover {
+    transform: scale(1.08);
+    filter: brightness(1.1);
+  }
+
+  /* Cursor pointer sur tous les SVG */
+  svg {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  /* Composants réutilisables */
+
+  /* Navigation Links */
+  .nav-link {
+    font-family: var(--font-dwight);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  /* CTA Links (Mehr erfahren, etc.) */
+  .cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-dwight);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.16px;
+    color: #e1191e;
+    transition-property: color;
+    transition-duration: 300ms;
+  }
+
+  .cta-link:hover {
+    color: #5b0a0f;
+  }
+
+  .dark .cta-link {
+    color: #e1191e;
+  }
+
+  .dark .cta-link:hover {
+    color: #5b0a0f;
+  }
+}
+
+@layer utilities {
+  /* Utilitaires personnalisés */
+
+  /* Style pour les SVG */
+  .stroke-gray-200 {
+    stroke: var(--color-gray-200);
+  }
+}

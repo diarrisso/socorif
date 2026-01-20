@@ -1,0 +1,162 @@
+/**
+ * Header Styles
+ *
+ * @package Ossenberg_Engels
+ */
+
+// Sticky header on mobile (not on overlay)
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: all 0.3s ease-in-out;
+
+  @media (max-width: 1023px) {
+    // Shadow appears when scrolling
+    &.scrolled {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+// Logo responsive styles - Applied to header, desktop overlay, and mobile overlay
+header,
+.desktop-overlay-nav,
+.mobile-overlay {
+  // Small mobile devices (max 320px)
+
+  @media (max-width: 576px) {
+    .logo {
+      width: 200px !important;
+    }
+  }
+
+  @media (max-width: 320px) {
+    // Target logo in flex-shrink-0 container (header, desktop-overlay)
+    .flex-shrink-0 img {
+      width: 200px;
+    }
+
+    // Target logo directly in mobile-overlay (different structure)
+    > div > div > div img[alt*="Ossenberg"] {
+      width: 200px;
+      height: auto;
+    }
+    .close-logo-container {
+      padding-inline: calc(var(--spacing) * 4) !important;
+    }
+
+    .close-svg {
+    }
+  }
+
+  .nav-container {
+    .px-8 {
+      padding-inline: calc(var(--spacing) * 4) !important;
+    }
+  }
+}
+
+// Mobile overlay logo specific positioning
+.mobile-overlay {
+  @media (max-width: 320px) {
+    .close-svg-mobile {
+      right: 5rem !important;
+    }
+  }
+}
+
+// Mobile overlay specific styles
+.mobile-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 999999 !important;
+  overflow: hidden !important;
+}
+
+.gap-custom {
+  gap: 0.7rem !important;
+}
+
+/* Animation for menu items */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.nav-links li {
+  animation: slideInLeft 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Responsive improvements */
+@media (max-height: 700px) {
+  .mobile-overlay .text-7xl {
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+  }
+}
+
+/* Ensure proper scrolling on mobile */
+@media (max-width: 768px) {
+  .mobile-overlay {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Mobile/Tablet header controls styling */
+@media (max-width: 1023px) {
+  // Container for mobile controls (contact, dark mode, language, hamburger)
+  header {
+    .py-8 {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+  }
+
+  // Ensure language dropdown doesn't overflow on mobile
+  .absolute.right-0.mt-2 {
+    right: 0 !important;
+    left: auto !important;
+  }
+}
+
+// Logo size adjustments for mobile range 275px-400px
+@media (min-width: 275px) and (max-width: 400px) {
+  header {
+    .flex-shrink-0 img {
+      width: 100px !important;
+      height: auto !important;
+    }
+  }
+
+  // Mobile overlay logo size
+  .mobile-overlay {
+    img[alt*="Ossenberg"] {
+      width: 100px !important;
+      height: auto !important;
+    }
+  }
+}
+
+// Adjust spacing on very small screens
+@media (max-width: 480px) {
+  header {
+    .py-8 {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+  }
+}

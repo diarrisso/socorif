@@ -1,0 +1,381 @@
+/**
+ * Slider Block Styles
+ * Moderne Styling für den Slider/Karussell-Block mit erweiterten Bildeffekten
+ */
+
+.slider-block {
+  /* Container-Anpassungen für bessere Navigation-Positionierung */
+  .slider-container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    @media (min-width: 768px) {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  /* Swiper-Wrapper Optimierungen */
+  .swiper {
+    overflow: visible;
+  }
+
+  .swiper-wrapper {
+    @apply pb-4;
+  }
+
+  .swiper-slide {
+    height: auto;
+    display: flex;
+
+    /* Smooth Slide-In Animation */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideIn 0.6s ease-out forwards;
+
+    /* Gestaffelte Animation-Delays */
+    &:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+    &:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+    &:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+    &:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+    &:nth-child(7) {
+      animation-delay: 0.7s;
+    }
+    &:nth-child(8) {
+      animation-delay: 0.8s;
+    }
+    &:nth-child(9) {
+      animation-delay: 0.9s;
+    }
+    &:nth-child(10) {
+      animation-delay: 1s;
+    }
+  }
+
+  /* Slider Card - Hauptcontainer */
+  .slider-card {
+    will-change: transform, box-shadow;
+    transform-origin: center;
+
+    /* Performance-Optimierung */
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+
+    /* 3D-Tiefeneffekt bei Hover */
+    &:hover {
+      transform: translateY(-8px) scale(1.02);
+      z-index: 10;
+
+      .slider-card-image {
+        img {
+          filter: brightness(1.1) contrast(1.05);
+        }
+      }
+    }
+  }
+
+  /* Bild-Container Verbesserungen */
+  .slider-card-image {
+    position: relative;
+    isolation: isolate;
+
+    /* Konsistente Bildgrößen */
+    &::before {
+      content: "";
+      display: block;
+      padding-bottom: 75%; /* 4:3 Aspect Ratio */
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      will-change: transform, filter;
+      transform-origin: center;
+
+      /* Smooth Filter-Übergänge */
+      transition:
+        transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1),
+        filter 0.5s ease-out;
+    }
+
+    /* Parallax-ähnlicher Effekt */
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(253, 184, 51, 0.1) 0%,
+        transparent 50%,
+        rgba(45, 49, 66, 0.1) 100%
+      );
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .slider-card:hover &::after {
+      opacity: 1;
+    }
+  }
+
+  /* Navigation Buttons - Erweiterte Styles */
+  .swiper-button-prev,
+  .swiper-button-next {
+    /* Zusätzliche Glüheffekte */
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: linear-gradient(
+        135deg,
+        var(--beka-primary),
+        var(--beka-primary-dark)
+      );
+      opacity: 0;
+      filter: blur(8px);
+      transition: opacity 0.3s ease-out;
+      z-index: -1;
+    }
+
+    &:hover::before {
+      opacity: 0.6;
+    }
+
+    /* Puls-Animation bei Idle */
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+    &:hover {
+      animation: none;
+    }
+
+    /* Disabled-State */
+    &.swiper-button-disabled {
+      opacity: 0.3;
+      pointer-events: none;
+      transform: scale(0.9);
+    }
+  }
+
+  /* Pagination Dots - Moderne Gestaltung */
+  .swiper-pagination {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
+
+  .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #cbd5e1;
+    opacity: 0.6;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    &:hover {
+      opacity: 0.8;
+      transform: scale(1.2);
+    }
+
+    &-active {
+      width: 32px;
+      border-radius: 6px;
+      background: linear-gradient(
+        90deg,
+        var(--beka-primary),
+        var(--beka-primary-dark)
+      );
+      opacity: 1;
+      transform: scale(1);
+
+      &::before {
+        border-color: var(--beka-primary);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: -8px;
+        border-radius: 8px;
+        background: var(--beka-primary);
+        opacity: 0.2;
+        filter: blur(8px);
+      }
+    }
+  }
+
+  /* Progress Bar Alternative (optional, kann aktiviert werden) */
+  .swiper-pagination-progressbar {
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(203, 213, 225, 0.3);
+    overflow: hidden;
+
+    .swiper-pagination-progressbar-fill {
+      background: linear-gradient(
+        90deg,
+        var(--beka-primary),
+        var(--beka-primary-dark)
+      );
+      border-radius: 2px;
+      box-shadow: 0 0 10px rgba(253, 184, 51, 0.5);
+    }
+  }
+
+  /* Dark Mode Anpassungen */
+  &.dark,
+  .dark & {
+    .swiper-pagination-bullet {
+      background-color: #475569;
+
+      &-active {
+        background: linear-gradient(
+          90deg,
+          var(--beka-primary),
+          var(--beka-primary-dark)
+        );
+      }
+    }
+
+    .slider-card-image::after {
+      background: linear-gradient(
+        135deg,
+        rgba(253, 184, 51, 0.15) 0%,
+        transparent 50%,
+        rgba(45, 49, 66, 0.15) 100%
+      );
+    }
+  }
+
+  /* Responsive Anpassungen */
+  @media (max-width: 767px) {
+    .slider-card-content {
+      padding: 1.25rem;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      width: 3rem !important;
+      height: 3rem !important;
+
+      &::after {
+        font-size: 1.125rem !important;
+      }
+    }
+  }
+
+  /* Touch-Gerät Optimierungen */
+  @media (hover: none) and (pointer: coarse) {
+    .slider-card:active {
+      transform: scale(0.98);
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      /* Größere Touch-Targets */
+      &::before {
+        inset: -8px;
+      }
+    }
+  }
+}
+
+/* Animationen */
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(253, 184, 51, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(253, 184, 51, 0);
+  }
+}
+
+/* Preload-Animation für Bilder */
+.slider-card-image {
+  &.loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Glassmorphism-Effekt Verbesserung */
+.slider-card {
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+  }
+}
+
+/* Zugänglichkeit - Focus States */
+.swiper-button-prev,
+.swiper-button-next {
+  &:focus-visible {
+    outline: 3px solid var(--beka-primary);
+    outline-offset: 4px;
+  }
+}
+
+.swiper-pagination-bullet {
+  &:focus-visible {
+    outline: 2px solid var(--beka-primary);
+    outline-offset: 2px;
+  }
+}
+
+/* Performance-Hinweise für Browser */
+.slider-card,
+.slider-card-image img {
+  transform: translateZ(0);
+  will-change: transform;
+}

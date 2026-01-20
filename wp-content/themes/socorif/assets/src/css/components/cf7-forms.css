@@ -1,0 +1,396 @@
+/**
+ * Contact Form 7 Custom Styles
+ * Styles für die BEKA Angebotsformulare - Style identique à page-kontakt.php
+ */
+
+/* Alpine.js - x-cloak utility */
+[x-cloak] {
+  @apply hidden;
+}
+
+/* Form Structure - Layout Classes */
+.cf7-service-form {
+  @apply w-full;
+}
+
+.cf7-service-form .form-section h3 {
+  @apply text-xl font-bold text-gray-900 dark:text-white mb-4;
+}
+
+.cf7-service-form .form-row {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4;
+}
+
+.cf7-service-form .form-col,
+.cf7-service-form .form-col-full {
+  @apply w-full;
+}
+
+.cf7-service-form .form-col-full {
+  @apply sm:col-span-2;
+}
+
+.cf7-service-form .datenschutz-label {
+  @apply flex items-start gap-3 text-sm text-gray-600 dark:text-gray-400;
+}
+
+.cf7-service-form .form-submit {
+  @apply mt-6;
+}
+
+.cf7-service-form .form-hint {
+  @apply mt-4 text-sm text-gray-500 dark:text-gray-400 text-center;
+}
+
+/* Label Styling - Labels cachés, on utilise uniquement les placeholders */
+.cf7-service-form label {
+  @apply sr-only;
+}
+
+/* Input Fields - Style identique à page-kontakt.php */
+.wpcf7-form input[type="text"],
+.wpcf7-form input[type="email"],
+.wpcf7-form input[type="tel"],
+.wpcf7-form .form-control {
+  @apply block w-full rounded-full border-0 bg-white px-3.5 py-2 text-gray-900
+         shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
+         focus:ring-2 focus:ring-inset;
+}
+
+.wpcf7-form input[type="text"]:focus,
+.wpcf7-form input[type="email"]:focus,
+.wpcf7-form input[type="tel"]:focus,
+.wpcf7-form .form-control:focus {
+  --tw-ring-color: var(--beka-primary);
+}
+
+/* Dark mode pour les inputs */
+@media (prefers-color-scheme: dark) {
+  .dark .wpcf7-form input[type="text"],
+  .dark .wpcf7-form input[type="email"],
+  .dark .wpcf7-form input[type="tel"],
+  .dark .wpcf7-form .form-control {
+    @apply bg-white/5 text-white ring-white/10;
+  }
+
+  .dark .wpcf7-form input[type="text"]:focus,
+  .dark .wpcf7-form input[type="email"]:focus,
+  .dark .wpcf7-form input[type="tel"]:focus,
+  .dark .wpcf7-form .form-control:focus {
+    --tw-ring-color: var(--beka-primary);
+  }
+}
+
+/* Textarea - Border radius de 3rem au lieu de rounded-3xl */
+.wpcf7-form textarea {
+  @apply block w-full border-0 bg-white px-3.5 py-2 text-gray-900
+         shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
+         focus:ring-2 focus:ring-inset;
+  border-radius: 3rem!important;
+  min-height: 80px;
+  height: 100px;
+  max-height: 150px;
+  resize: vertical;
+}
+
+.wpcf7-form textarea:focus {
+  --tw-ring-color: var(--beka-primary);
+}
+
+/* Dark mode pour textarea */
+@media (prefers-color-scheme: dark) {
+  .dark .wpcf7-form textarea {
+    @apply bg-white/5 text-white ring-white/10;
+  }
+
+  .dark .wpcf7-form textarea:focus {
+    --tw-ring-color: var(--beka-primary);
+  }
+}
+
+/* Select Dropdown */
+.wpcf7-form select,
+.wpcf7-form .wpcf7-select {
+  @apply block w-full rounded-full border-0 bg-white px-3.5 py-2 text-gray-900
+         shadow-sm ring-1 ring-inset ring-gray-300
+         focus:ring-2 focus:ring-inset cursor-pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 1rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+.wpcf7-form select:focus,
+.wpcf7-form .wpcf7-select:focus {
+  --tw-ring-color: var(--beka-primary);
+}
+
+/* Dark mode pour select */
+@media (prefers-color-scheme: dark) {
+  .dark .wpcf7-form select,
+  .dark .wpcf7-form .wpcf7-select {
+    @apply bg-white/5 text-white ring-white/10;
+  }
+
+  .dark .wpcf7-form select:focus,
+  .dark .wpcf7-form .wpcf7-select:focus {
+    --tw-ring-color: var(--beka-primary);
+  }
+}
+
+/* Checkbox */
+.wpcf7-form input[type="checkbox"],
+.wpcf7-form .form-checkbox {
+  @apply w-5 h-5 rounded border-2 border-gray-300 cursor-pointer;
+  accent-color: var(--beka-primary);
+  flex-shrink: 0;
+}
+
+.wpcf7-form input[type="checkbox"]:focus,
+.wpcf7-form .form-checkbox:focus {
+  --tw-ring-color: var(--beka-primary);
+}
+
+/* Submit Button - Style identique à page-kontakt.php */
+.wpcf7-form input[type="submit"],
+.wpcf7-form .btn-primary {
+  @apply rounded-full px-6 py-3 text-sm font-semibold text-white shadow-sm
+         focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+         transition-all duration-300 cursor-pointer;
+  background-color: var(--beka-primary);
+}
+
+.wpcf7-form input[type="submit"]:hover,
+.wpcf7-form .btn-primary:hover {
+  @apply scale-105;
+}
+
+.wpcf7-form input[type="submit"]:active,
+.wpcf7-form .btn-primary:active {
+  @apply scale-95;
+}
+
+.wpcf7-form input[type="submit"]:focus-visible {
+  outline-color: var(--beka-primary);
+}
+
+/* Autorise l'affichage des paragraphes dans le formulaire */
+.wpcf7-form p {
+  @apply mb-0;
+}
+
+/* Cache uniquement les messages de validation par défaut (pas dans .cf7-service-form) */
+.wpcf7-form:not(.cf7-service-form) > p:not([class]) {
+  display: none !important;
+}
+
+/* CF7 Hidden Fields */
+.wpcf7-form-control-wrap {
+  @apply block w-full;
+}
+
+/* Accessibility */
+.wpcf7-form .screen-reader-response {
+  @apply sr-only;
+}
+
+/* Ajax Loader */
+.wpcf7 .ajax-loader {
+  @apply hidden;
+}
+
+/* CF7 Messages */
+.wpcf7-response-output {
+  @apply mt-6 p-4 rounded-xl border-2;
+}
+
+.wpcf7-mail-sent-ok {
+  @apply bg-green-50 dark:bg-green-900/20 border-green-500 text-green-700 dark:text-green-400;
+}
+
+.wpcf7-mail-sent-ng,
+.wpcf7-validation-errors {
+  @apply bg-red-50 dark:bg-red-900/20 border-red-500 text-red-700 dark:text-red-400;
+}
+
+.wpcf7-spam-blocked {
+  @apply bg-yellow-50 dark:bg-yellow-900/20 border-yellow-500 text-yellow-700 dark:text-yellow-400;
+}
+
+/* Validation Errors */
+.wpcf7-not-valid-tip {
+  @apply text-red-600 dark:text-red-400 text-sm mt-1 block;
+}
+
+span.wpcf7-not-valid {
+  @apply border-red-500 dark:border-red-500;
+}
+
+/* Loading Spinner */
+.wpcf7 form.submitting::after {
+  content: "";
+  @apply absolute inset-0 bg-white/80 dark:bg-neutral-800/80
+           flex items-center justify-center rounded-xl;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 50 50'%3E%3Cpath fill='%23f97316' d='M25,5A20.14,20.14,0,0,1,45,22.88a2.51,2.51,0,0,0,2.49,2.26h0A2.52,2.52,0,0,0,50,22.33a25.14,25.14,0,0,0-50,0,2.52,2.52,0,0,0,2.5,2.81h0A2.51,2.51,0,0,0,5,22.88,20.14,20.14,0,0,1,25,5Z'%3E%3CanimateTransform attributeName='transform' type='rotate' from='0 25 25' to='360 25 25' dur='0.6s' repeatCount='indefinite'/%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.wpcf7 form.submitting {
+  @apply relative overflow-hidden pointer-events-none;
+}
+
+/* CF7 Hidden Fields */
+.wpcf7-form-control-wrap {
+  @apply block w-full;
+}
+
+/* Accessibility */
+.wpcf7-form .screen-reader-response {
+  @apply sr-only;
+}
+
+/* Ajax Loader */
+.wpcf7 .ajax-loader {
+  @apply hidden;
+}
+
+/* Liste Items (Checkboxes/Radios) */
+.wpcf7-list-item {
+  @apply mb-2;
+}
+
+.wpcf7-list-item-label {
+  @apply ml-2 text-sm text-gray-700 dark:text-gray-300;
+}
+
+/* Label des checkboxes dans datenschutz */
+.cf7-service-form .form-section .wpcf7-list-item {
+  @apply flex items-start gap-2;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.cf7-service-form .form-section .wpcf7-list-item input[type="checkbox"] {
+  @apply mt-0.5 flex-shrink-0;
+}
+
+.cf7-service-form .form-section .wpcf7-list-item-label {
+  @apply flex-1;
+  font-size: 10px;
+}
+
+/* ========================================
+   STEPPER - Formulaire en 3 étapes
+   ======================================== */
+
+/* Conteneur du stepper */
+.cf7-stepper-wrapper {
+  @apply relative;
+}
+
+/* Indicateur d'étapes en haut */
+.cf7-stepper-indicator {
+  @apply flex items-center justify-center gap-4 mb-8;
+}
+
+.cf7-step-item {
+  @apply flex items-center gap-2;
+}
+
+.cf7-step-number {
+  @apply w-10 h-10 rounded-full flex items-center justify-center
+         font-bold text-sm transition-all duration-300
+         border-2;
+}
+
+/* Étape inactive */
+.cf7-step-item.inactive .cf7-step-number {
+  @apply bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600
+         text-gray-400 dark:text-gray-500;
+}
+
+/* Étape active */
+.cf7-step-item.active .cf7-step-number {
+  @apply text-white scale-110;
+  background-color: var(--beka-primary);
+  border-color: var(--beka-primary);
+}
+
+/* Étape complétée */
+.cf7-step-item.completed .cf7-step-number {
+  @apply bg-green-500 border-green-500 text-white;
+}
+
+.cf7-step-label {
+  @apply text-sm font-semibold transition-colors duration-300;
+}
+
+.cf7-step-item.inactive .cf7-step-label {
+  @apply text-gray-400 dark:text-gray-500;
+}
+
+.cf7-step-item.active .cf7-step-label {
+  @apply text-gray-900 dark:text-white;
+}
+
+.cf7-step-item.completed .cf7-step-label {
+  @apply text-green-600 dark:text-green-400;
+}
+
+/* Ligne de connexion entre les étapes */
+.cf7-step-connector {
+  @apply w-12 h-0.5 bg-gray-300 dark:bg-gray-600 transition-colors duration-300;
+}
+
+.cf7-step-item.completed + .cf7-step-connector {
+  @apply bg-green-500;
+}
+
+/* Contenu des étapes */
+.cf7-step-content {
+  @apply transition-all duration-300;
+}
+
+/* Navigation du stepper */
+.cf7-stepper-navigation {
+  @apply flex items-center justify-between gap-4 mt-8 pt-6 border-t border-gray-200 dark:border-gray-700;
+}
+
+.cf7-btn-back,
+.cf7-btn-next {
+  @apply px-6 py-3 rounded-full font-semibold transition-all duration-300
+         focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer;
+}
+
+.cf7-btn-back {
+  @apply bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300
+         hover:bg-gray-300 dark:hover:bg-gray-600;
+}
+
+.cf7-btn-next {
+  @apply text-white hover:scale-105;
+  background-color: var(--beka-primary);
+}
+
+.cf7-btn-next:hover {
+  background-color: var(--beka-primary-dark);
+}
+
+.cf7-btn-next:focus {
+  --tw-ring-color: var(--beka-primary);
+}
+
+.cf7-btn-back:disabled,
+.cf7-btn-next:disabled {
+  @apply opacity-50 cursor-not-allowed hover:scale-100;
+}
+
+/* Message d'erreur pour validation d'étape */
+.cf7-step-error {
+  @apply mt-4 p-3 rounded-xl bg-red-50 dark:bg-red-900/20
+         border border-red-200 dark:border-red-800
+         text-red-700 dark:text-red-400 text-sm;
+}

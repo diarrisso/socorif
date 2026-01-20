@@ -1,0 +1,232 @@
+/**
+ * Two-Factor Authentication Styles
+ */
+
+/* Modal Overlay */
+.tfa-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Container */
+.tfa-modal {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Modal Header */
+.tfa-modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tfa-modal-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.tfa-modal-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.tfa-modal-close:hover {
+  background: #f0f0f0;
+  color: #000;
+}
+
+/* Modal Body */
+.tfa-modal-body {
+  padding: 24px;
+}
+
+/* QR Code Section */
+.tfa-qr-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.tfa-qr-code {
+  margin: 20px 0;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.tfa-qr-code img {
+  max-width: 250px;
+  height: auto;
+  display: block;
+}
+
+.tfa-manual-entry {
+  margin-top: 15px;
+  padding: 15px;
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+
+.tfa-manual-entry code {
+  font-size: 16px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: #2271b1;
+  padding: 8px 12px;
+  background: #fff;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+/* Backup Codes Section */
+.tfa-backup-codes-section {
+  margin: 30px 0;
+  padding: 20px;
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 8px;
+}
+
+.tfa-backup-codes-section h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #856404;
+}
+
+.tfa-backup-codes-section p {
+  color: #856404;
+  margin-bottom: 15px;
+}
+
+.tfa-codes-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.tfa-codes-list code {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: center;
+  display: block;
+  letter-spacing: 1px;
+}
+
+.tfa-download-codes {
+  margin-top: 15px;
+}
+
+/* Verification Section */
+.tfa-verify-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  text-align: center;
+}
+
+.tfa-verify-section input {
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 4px;
+  font-weight: 600;
+  max-width: 200px;
+  margin: 15px auto;
+  display: block;
+}
+
+/* Login Form 2FA Field */
+.tfa-help-text {
+  font-size: 13px;
+  color: #646970;
+  margin-top: -10px;
+}
+
+#two_factor_code {
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+/* Profile Status Indicators */
+.form-table .description span[style*="color: green"] {
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .tfa-modal {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .tfa-modal-body {
+    padding: 16px;
+  }
+
+  .tfa-codes-list {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px;
+  }
+
+  .tfa-qr-code img {
+    max-width: 200px;
+  }
+}
