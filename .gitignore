@@ -9,6 +9,7 @@
 
 # Configuration
 wp-config.php
+!wp-config-production.php
 
 # Uploads
 /wp-content/uploads/
